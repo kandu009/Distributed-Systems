@@ -1,4 +1,4 @@
-package project1;
+package project1.rmi;
 
 /**
  * class which denotes Response format which is used by the {@link IBankServer}

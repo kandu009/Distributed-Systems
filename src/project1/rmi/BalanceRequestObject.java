@@ -1,4 +1,4 @@
-package project1;
+package project1.rmi;
 
 /**
  * {@link IRequestObject} for Balance requests. Holds the key and value pairs

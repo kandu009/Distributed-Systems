@@ -1,4 +1,4 @@
-package project1;
+package project1.rmi;
 import java.io.IOException;
 import java.util.logging.FileHandler;
 import java.util.logging.Logger;

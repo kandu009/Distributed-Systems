@@ -1,4 +1,4 @@
-package project1;
+package project1.rmi;
 import java.net.UnknownHostException;
 import java.rmi.AlreadyBoundException;
 import java.rmi.RMISecurityManager;

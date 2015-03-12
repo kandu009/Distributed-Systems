@@ -1,4 +1,4 @@
-package project1;
+package project1.rmi;
 
 /**
  * An implementation of {@link IRequest} which is used to make a withdrawal from

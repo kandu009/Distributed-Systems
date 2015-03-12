@@ -1,4 +1,4 @@
-package project1;
+package project1.rmi;
 /**
  * {@link IRequestObject} for New Account requests. Holds the key and value
  * pairs of all the fields which are necessary to make a

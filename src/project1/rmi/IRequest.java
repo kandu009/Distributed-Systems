@@ -1,4 +1,4 @@
-package project1;
+package project1.rmi;
 /**
  * Interface which denotes a request sent by the client to an RMI server
  * 
