@@ -1,0 +1,71 @@
+1) Starting node0 on kh1262-08 (This is the node0 in this example)
+
+	ssh kh1262-08.cselabs.umn.edu
+	#kill and clear any of rmiregistry stuff which exists on this node and start a new one
+	pkill rmiregistry; sleep 1; rmiregistry -J-Djava.rmi.server.useCodebaseOnly=false 50000 &
+	#go to assignment7 directory
+	#start the DHT node
+	java Node kh1262-08.cselabs.umn.edu/node0 kh1262-08.cselabs.umn.edu/node0 50000
+
+2) Starting node0 on kh1262-10
+
+	ssh kh1262-10.cselabs.umn.edu
+	#kill and clear any of rmiregistry stuff which exists on this node and start a new one
+	pkill rmiregistry; sleep 1; rmiregistry -J-Djava.rmi.server.useCodebaseOnly=false 50000 &
+	#go to assignment7 directory
+	#start the DHT node
+	java Node kh1262-10.cselabs.umn.edu/node1 kh1262-08.cselabs.umn.edu/node0 50000
+
+3) Starting node0 on kh1262-11
+
+	ssh kh1262-11.cselabs.umn.edu
+	#kill and clear any of rmiregistry stuff which exists on this node and start a new one
+	pkill rmiregistry; sleep 1; rmiregistry -J-Djava.rmi.server.useCodebaseOnly=false 50000 &
+	#go to assignment7 directory
+	#start the DHT node
+	java Node kh1262-11.cselabs.umn.edu/node2 kh1262-08.cselabs.umn.edu/node0 50000
+
+4) start the client
+	ssh kh1262-03.cselabs.umn.edu
+	#go to assignment7 directory
+	#start the DHT node
+	java -Djava.security.policy=mySecurityPolicyfile Client kh1262-08.cselabs.umn.edu/node0 50000
+
+		#you will see a help list of choices that you might want to see (explained above)
+		#I have given some list of operations that you could do. These should cover the test cases mentioned in README
+		1. 2 -> should see tree structure (3 entries now)
+		2. 3 -> pod	(should see the meaning 'seed-case of leguminous plants, cocoons of silkworms')
+		3. 4 -> adverb (should see the meaning 'word that modifies a verb')
+		4. 5 -> (Enter 'pen' and then 'to write', this will be now added to dictionary)
+		5. 3 -> pen (you should see the meaning 'to write' now for 'pen')
+		6. 5 -> (Enter 'pen' and then 'to write write', this will be now override the previous pen in the dictionary)
+		7. 3 -> pen (you should see new meaning 'to write write' now for 'pen')
+
+5) Starting node0 on kh1262-12
+
+	ssh kh1262-12.cselabs.umn.edu
+	#kill and clear any of rmiregistry stuff which exists on this node and start a new one
+	pkill rmiregistry; sleep 1; rmiregistry -J-Djava.rmi.server.useCodebaseOnly=false 50000 &
+	#go to assignment7 directory
+	#start the DHT node
+	java Node kh1262-12.cselabs.umn.edu/node3 kh1262-08.cselabs.umn.edu/node0 50000
+
+6) Starting node0 on kh1262-08
+
+	#you do not want to cleanup the registry here as we already have node0 using this up and we already cleaned it
+	ssh kh1262-08.cselabs.umn.edu
+	#go to assignment7 directory
+	#start the DHT node
+	java Node kh1262-08.cselabs.umn.edu/node4 kh1262-08.cselabs.umn.edu/node0 50000
+
+		Then do lookup, insert, re-lookup operations. These should cover the test cases mentioned in README
+		#I have given some list of operations that you could do
+		1. 2 -> should see tree structure (5 entries now and fingers/keys will be redistributed)
+		2. 3 -> answer	(should see the meaning 'a reply, a solution')
+		3. 4 -> decide	(should see the meaning 'settle, determine, give, judgement')
+		4. 3 -> pen1	(you should see an error message that word is not found)
+		5. 3 -> pen2	(you should see an error message that word is not found)
+		6. 5 -> (Enter 'pen1' and then 'to write1', this will be now added to dictionary)
+		7. 3 -> pen1 (you should see the meaning ''to write1' now for 'pen1')
+		8. 6 -> (Enter 'pen2' and then 'to write2', this will be now override the previous pen in the dictionary)
+		9. 4 -> pen2 (you should see new meaning 'to write2' now for 'pen2')
